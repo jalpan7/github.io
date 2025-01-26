@@ -1,0 +1,185 @@
+<!-- Author Name: Nirmal Patel, Jalpan Patel
+     Group 9
+     Date:23/1/25
+     Discription: this is the opportunities page for the website which will show the upcoming events
+     for the volunteering and user can also signup for the events.
+      -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Opportunities</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="opportunities.html">Opportunities</a></li>
+                <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="privacypolicy.html">Privacy Policy</a></li>
+                        <li><a class="dropdown-item" href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="text-center">Volunteer Opportunities</h1>
+    <div id="opportunitiesContainer" class="row mt-4">
+        <!-- Volunteer opportunities populated here -->
+    </div>
+</div>
+
+<!-- Sign-Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signUpModalTitle">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5 id="eventTitle"></h5>
+                <p id="eventDetails"></p>
+
+                <form id="signUpForm">
+                    <div class="mb-3">
+                        <label for="volunteerName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="volunteerName" name="volunteerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="volunteerEmail" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="volunteerEmail" name="volunteerEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="volunteerPhone" class="form-label">Your Phone</label>
+                        <input type="tel" class="form-control" id="volunteerPhone" name="volunteerPhone">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="signUpButton">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--it is the footer section of the page-->
+<footer>
+    <p>&copy; Volunteer Connect made by Nirmal And Jalpan</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const opportunities = [
+        {
+            title: "City Charity Run",
+            description: "Join us for the City Charity Run and support a good cause while getting some exercise.",
+            date: "2025-03-20",
+            time: "8:00 AM - 12:00 PM",
+            location: "Downtown Park",
+        },
+        {
+            title: "Park Cleanup Initiative",
+            description: "Help clean and beautify Maple Leaf Park with fellow community members.",
+            date: "2025-04-15",
+            time: "9:00 AM - 1:00 PM",
+            location: "Maple Leaf Park",
+        },
+        {
+            title: "Charity Auction",
+            description: "Assist with the setup, bidding process, and distribution at the Charity Auction event.",
+            date: "2025-06-01",
+            time: "1:00 PM - 5:00 PM",
+            location: "Riverside Convention Center",
+        },
+        {
+            title: "Digital Literacy Workshop",
+            description: "Support a workshop to improve digital skills for the community.",
+            date: "2025-07-10",
+            time: "10:00 AM - 3:00 PM",
+            location: "Tech Hub",
+        },
+        {
+            title: "Community Beach Cleanup",
+            description: "Volunteer to help clean up the beautiful Sunset Beach and protect the local ecosystem.",
+            date: "2025-08-20",
+            time: "7:00 AM - 11:00 AM",
+            location: "Sunset Beach",
+        }
+    ];
+
+    const opportunitiesContainer = document.getElementById('opportunitiesContainer');
+
+    opportunities.forEach(opportunity => {
+        const card = document.createElement('div');
+        card.classList.add('col-md-4');
+
+        card.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">${opportunity.title}</h5>
+                <p>${opportunity.description}</p>
+                <p><strong>Date:</strong> ${opportunity.date}</p>
+                <p><strong>Time:</strong> ${opportunity.time}</p>
+                <p><strong>Location:</strong> ${opportunity.location}</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal" onclick="prepareSignUp('${opportunity.title}', '${opportunity.date}', '${opportunity.time}', '${opportunity.location}')">Sign Up</button>
+            </div>
+        </div>
+        `;
+        opportunitiesContainer.appendChild(card);
+    });
+
+    // Function to handle the sign-up button click
+    window.prepareSignUp = function (title, date, time, location) {
+        const signUpModalTitle = document.getElementById('signUpModalTitle');
+        const eventTitle = document.getElementById('eventTitle');
+        const eventDetails = document.getElementById('eventDetails');
+
+        signUpModalTitle.innerText = "Sign Up for " + title;
+        eventTitle.innerText = title;
+        eventDetails.innerHTML = `<strong>Date:</strong> ${date}<br><strong>Time:</strong> ${time}<br><strong>Location:</strong> ${location}`;
+
+        const signUpButton = document.getElementById('signUpButton');
+        signUpButton.onclick = function () {
+            const volunteerName = document.getElementById('volunteerName').value;
+            const volunteerEmail = document.getElementById('volunteerEmail').value;
+            const volunteerPhone = document.getElementById('volunteerPhone').value;
+
+            if (!volunteerName || !volunteerEmail) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            alert(`Thank you, ${volunteerName}! You have successfully signed up for the event: ${title}.\n\nDetails will be sent to ${volunteerEmail}.`);
+
+            // Close the modal and reset the form
+            $('#signUpModal').modal('hide');
+            document.getElementById('signUpForm').reset();
+        };
+    };
+</script>
+
+</body>
+</html>
