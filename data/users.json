@@ -1,0 +1,33 @@
+{
+  "users" :
+          [
+            {
+              "DisplayName" : "Jalpan",
+              "EmailAddress" : "jalpan@durhamcollege.ca",
+              "Username" : "jalpan",
+              "password" : "777777"
+            },
+
+            {
+              "DisplayName" : "jay ",
+              "EmailAddress" : "jayp@durhamcollege.ca",
+              "Username" : "jay",
+              "password" : "24568"
+            },
+
+            {
+              "DisplayName" : "sneh",
+              "EmailAddress" : "sneh@durhamcollege.ca",
+              "Username" : "sneh",
+              "password" : "124789"
+            }
+
+
+
+          ]
+
+
+
+
+
+}

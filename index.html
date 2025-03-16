@@ -1,120 +1,38 @@
-<!-- Author Name: Nirmal Patel, Jalpan Patel
-     Group 9
-     Date:23/1/25
-     Discription: this is the index file for the website which shows
-      the home page of the website which header and footer and it has link
-      to different pages
-      -->
-
-<!--it will declare the document of HTML5-->
-<!DOCTYPE html>
-<!--it specifies that the content is in english -->
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- it will Sets the character encoding to UTF-8 for proper display of special characters -->
     <meta charset="UTF-8">
-    <!-- it will Ensures the page is responsive on mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- it will declare the title -->
-    <title>Volunteer Connect</title>
-    <!-- it shows the use of css link -->
-    <link rel="stylesheet" href="css/app.css">
-    <!--  this uses the bootstrap link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+
+    <!--css section-->
+    <link rel="stylesheet" href="Content/app.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 </head>
 <body>
-<!-- navigation bar -->
-<!-- it will Create a Bootstrap navigation bar that is expandable on larger screens -->
-<nav class="navbar navbar-expand-lg">
-    <!-- Define the container for the navigation bar -->
-    <div class="container-fluid">
-        <!-- it will link navbar to the homepage -->
-        <a class="navbar-brand" href="index.html">Volunteer Connect</a>
-        <!-- it will show Button to toggle the navbar on smaller screens -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Left-side links -->
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <!--  it will Link to the opportunities page -->
-                <li class="nav-item"><a class="nav-link" href="pages/opportunities.html">Opportunities</a></li>
-                <!--  it will Link to the events page -->
-                <li class="nav-item"><a class="nav-link" href="pages/events.html">Events</a></li>
-                <!--  it will Link to the contact page -->
-                <li class="nav-item"><a class="nav-link" href="pages/contactus.html">Contact Us</a></li>
-                <!--  it will Link to the about us page -->
-                <li class="nav-item"><a class="nav-link" href="pages/about.html">About Us</a></li>
-                <!--  it will Link to the donate page -->
-                <li class="nav-item"><a class="nav-link" href="pages/donate.html">Donate</a></li>
-            </ul>
-            <!-- Right-side dropdown menu -->
-            <ul class="navbar-nav"> <!-- This moves the dropdown to the right -->
-                <li class="nav-item dropdown">
-                    <!-- it will uses dropdown trigger-->
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-                    <!-- it shows the use of dropdown list -->
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!-- it will use the link to privacy policy page-->
-                        <li><a class="dropdown-item" href="pages/privacypolicy.html">Privacy Policy</a></li>
-                        <!-- it will use the link to terms and service page-->
-                        <li><a class="dropdown-item" href="pages/terms.html">Terms of Service</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
-<!-- Hero Section -->
-<div class="hero-section">
-    <h1>Welcome to Volunteer Connect Web Site!</h1>
-    <p>Come together with us as we work to improve your town and beyond.</p>
-    <a href="pages/opportunities.html" class="btn-custom">GET INVOLVED</a>
-</div>
+<header>
+</header>
 
-<!-- this Carousel Section which is used for automatic rotation of the pictures -->
-<!-- this is the container for the carousel-->
-<div class="carousel-container container">
-    <!-- it is the bootstrap carousel for displaying images-->
-    <div id="volunteerCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <!-- it is the First carousel item (active by default) -->
-            <div class="carousel-item active">
-                <!-- it is the Image for the first carousel item -->
-                <img src="images/image 1.jpg" class="d-block w-100" alt="Volunteer image 1">
-            </div>
-            <div class="carousel-item">
-                <!-- it is the Image for the second carousel item -->
-                <img src="images/image 2.jpg" class="d-block w-100" alt="Volunteer image 2">
-            </div>
-            <div class="carousel-item">
-                <!-- it is the Image for the third carousel item -->
-                <img src="images/image 3.jpg" class="d-block w-100" alt="Volunteer image 3">
-            </div>
-        </div>
-        <!--  it shows the previous button for the images rotation  -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <!--  it shows the previous button for the images rotation  -->
-        <button class="carousel-control-next" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
 
-<!-- it is the Footer for the page -->
-<footer>
-    <p>&copy; Volunteer Connect made by Nirmal And Jalpan</p>
-</footer>
+<main class = "container"></main>
 
-<!-- it is the Bootstrap and custom JavaScript files -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!--it is the link to javascript file -->
-<script src="js/index.js"></script>
+<footer></footer>
+
+
+<!-- Scripting section-->
+<script src="Scripts/namespace.js"></script>
+<script type="module" src="Scripts/authguard.js"></script>
+
+<!-- Module Includes -->
+<script type="module" src="Scripts/contact.js"></script>
+<script type="module" src="Scripts/user.js"></script>
+<script type="module" src="Scripts/router.js"></script>
+<script type="module" src="Scripts/app.js"></script>
+
 </body>
 </html>
