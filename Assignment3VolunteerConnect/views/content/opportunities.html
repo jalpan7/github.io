@@ -1,0 +1,124 @@
+<!-- Author Name: Nirmal Patel, Jalpan Patel
+     Group 9
+     Date:22/2/25
+     Discription: this is the opportunities page for the website which will show the upcoming events
+     for the volunteering and user can also signup for the events.
+      -->
+
+<!--it will uses doctype-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Opportunities</title>
+    <link rel="stylesheet" href="/Content/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--this is the navbar section-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="opportunities.html">Opportunities</a></li>
+                <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="privacypolicy.html">Privacy Policy</a></li>
+                        <li><a class="dropdown-item" href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container mt-4">
+    <h1 class="text-center">Volunteer Opportunities</h1>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+
+    <h2 class="mt-4">Upcoming Events</h2>
+    <div id="opportunitiesContainer" class="row mt-3">
+        <!-- Volunteer opportunities populated here -->
+    </div>
+</div>
+
+<!-- it will uses Google Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvtf2uYoHq0WoACu6gW2xgxGtyHvkOvFw&callback=initMap" async defer></script>
+
+<script>
+    const opportunities = [
+        // it will show the title location by using longitude and latitude
+        { title: "City Charity Run", description: "Join us for the City Charity Run and support a good cause while getting some exercise.", date: "2025-03-20", time: "8:00 AM - 12:00 PM", location: "Downtown Park", lat: 43.8971, lng: -78.8658 },
+        { title: "Park Cleanup Initiative", description: "Help clean and beautify Maple Leaf Park with fellow community members.", date: "2025-04-15", time: "9:00 AM - 1:00 PM", location: "Maple Leaf Park", lat: 43.9106, lng: -78.8785 },
+        { title: "Charity Auction", description: "Assist with the setup, bidding process, and distribution at the Charity Auction event.", date: "2025-06-01", time: "1:00 PM - 5:00 PM", location: "Riverside Convention Center", lat: 43.8923, lng: -78.8661 },
+        { title: "Digital Literacy Workshop", description: "help to learn about digital literacy", date: "2025-07-10", time: "2:00 PM - 4:00 PM", location: "Tech Hub", lat: 43.8923, lng: -78.8800 },
+        { title: "Community Beach Cleanup", description: "help to clean the beach", date: "2025-08-20", time: "1:00 PM - 6:00 PM", location: "Sunset Beach", lat: 43.8923, lng: -78.8921 },
+    ];
+
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 43.8971, lng: -78.8658 },
+            zoom: 13,
+        });
+
+        opportunities.forEach(opportunity => {
+            const marker = new google.maps.Marker({
+                position: { lat: opportunity.lat, lng: opportunity.lng },
+                map,
+                title: opportunity.title,
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<h6>${opportunity.title}</h6><p>${opportunity.description}</p>`
+            });
+
+            marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+            });
+        });
+
+        displayUpcomingEvents();
+    }
+
+    function displayUpcomingEvents() {
+        const container = document.getElementById("opportunitiesContainer");
+        container.innerHTML = "";
+
+        opportunities.forEach(event => {
+            const eventCard = document.createElement("div");
+            eventCard.className = "col-md-4 mb-4";
+            eventCard.innerHTML = `
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">${event.title}</h5>
+                        <p class="card-text"><strong>Date:</strong> ${event.date}</p>
+                        <p class="card-text"><strong>Time:</strong> ${event.time}</p>
+                        <p class="card-text"><strong>Location:</strong> ${event.location}</p>
+                        <p class="card-text">${event.description}</p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(eventCard);
+        });
+    }
+</script>
+<footer>
+    <p>&copy; Volunteer Connect made by Nirmal And Jalpan</p>
+</footer>
+
+</body>
+</html>

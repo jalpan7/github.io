@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planning - Volunteer Connect</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/app.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">Volunteer Connect</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/views/content/opportunities.html">Opportunities</a></li>
+                <li class="nav-item"><a class="nav-link" href="/views/content/events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="/views/content/contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/views/content/about.html">About Us</a></li>
+            </ul>
+            <div class="d-flex">
+                <a id="loginButton" class="btn btn-primary ms-2" href="/views/content/login.html">Login</a>
+                <button id="logoutButton" class="btn btn-danger d-none ms-2">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1>Event Planning</h1>
+    <p>Welcome to the Event Planning page! Here, you can create, edit, and delete events.</p>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2>Create a New Event</h2>
+            <form id="eventForm">
+                <input type="hidden" id="eventId">
+                <div class="mb-3">
+                    <label for="eventName" class="form-label">Event Name</label>
+                    <input type="text" class="form-control" id="eventName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="eventDate" class="form-label">Event Date</label>
+                    <input type="date" class="form-control" id="eventDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="eventLocation" class="form-label">Event Location</label>
+                    <input type="text" class="form-control" id="eventLocation" required>
+                </div>
+                <div class="mb-3">
+                    <label for="eventDescription" class="form-label">Event Description</label>
+                    <textarea class="form-control" id="eventDescription" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Save Event</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h2>Upcoming Events</h2>
+            <ul id="eventList" class="list-group">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-light text-center py-3 mt-5">
+    <p>&copy; Volunteer Connect made by Nirmal And Jalpan</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const eventForm = document.getElementById("eventForm");
+        const eventList = document.getElementById("eventList");
+        let events = [];
+
+        eventForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const eventId = document.getElementById("eventId").value;
+            const eventName = document.getElementById("eventName").value;
+            const eventDate = document.getElementById("eventDate").value;
+            const eventLocation = document.getElementById("eventLocation").value;
+            const eventDescription = document.getElementById("eventDescription").value;
+
+            if (eventId) {
+                events = events.map(evt => evt.id === eventId ? { id: eventId, eventName, eventDate, eventLocation, eventDescription } : evt);
+            } else {
+                events.push({ id: Date.now().toString(), eventName, eventDate, eventLocation, eventDescription });
+            }
+
+            renderEvents();
+            eventForm.reset();
+            document.getElementById("eventId").value = "";
+        });
+
+        function renderEvents() {
+            eventList.innerHTML = "";
+            events.forEach(event => {
+                const eventItem = document.createElement("li");
+                eventItem.classList.add("list-group-item");
+                eventItem.innerHTML = `
+                    <h5>${event.eventName}</h5>
+                    <p><strong>Date:</strong> ${event.eventDate}</p>
+                    <p><strong>Location:</strong> ${event.eventLocation}</p>
+                    <p><strong>Description:</strong> ${event.eventDescription}</p>
+                    <button class="btn btn-warning btn-sm me-2" onclick="editEvent('${event.id}')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteEvent('${event.id}')">Delete</button>
+                `;
+                eventList.appendChild(eventItem);
+            });
+        }
+
+        window.editEvent = function (id) {
+            const event = events.find(evt => evt.id === id);
+            document.getElementById("eventId").value = event.id;
+            document.getElementById("eventName").value = event.eventName;
+            document.getElementById("eventDate").value = event.eventDate;
+            document.getElementById("eventLocation").value = event.eventLocation;
+            document.getElementById("eventDescription").value = event.eventDescription;
+        };
+
+        window.deleteEvent = function (id) {
+            events = events.filter(evt => evt.id !== id);
+            renderEvents();
+        };
+    });
+</script>
+</body>
+</html>

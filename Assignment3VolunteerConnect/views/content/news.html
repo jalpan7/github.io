@@ -1,0 +1,136 @@
+<!-- Author Name: Nirmal Patel, Jalpan Patel -->
+<!-- Group 9 -->
+<!-- Date: 20/2/25 -->
+<!-- Description: This is the news file for the website which shows -->
+<!-- the community news  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community News</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- this is the Content code for the new html    -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fafafa;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .news-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .news-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .news-item a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">Volunteer Connect</a>
+    </div>
+</nav>
+
+<div class="news-container">
+    <h1>Community News</h1>
+    <div id="newsList"></div>
+</div>
+
+<script>
+<!--    this is the api key from the website newsdata.io-->
+    const apiKey = 'pub_71581701ee7098d7b73559ac5bf65838e09de';
+    const apiUrl = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=community&country=ca`;
+
+    // it will get the html element where news article will be display
+    const newsList = document.getElementById('newsList');
+
+    // it will uses funcion to fetch news article from the api key form newsdata.io
+    async function fetchNews() {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (data.status === 'success' && data.results.length > 0) {
+                data.results.forEach(article => {
+                    const newsItem = document.createElement('div');
+                    newsItem.classList.add('news-item');
+
+                    const title = document.createElement('h3');
+                    title.textContent = article.title;
+
+                    const description = document.createElement('p');
+                    description.textContent = article.description || 'No description available.';
+
+                    const link = document.createElement('a');
+                    link.href = article.link;
+                    link.textContent = 'Read more';
+                    link.target = '_blank';
+
+                    newsItem.appendChild(title);
+                    newsItem.appendChild(description);
+                    newsItem.appendChild(link);
+
+                    newsList.appendChild(newsItem);
+                });
+            } else {
+                newsList.innerHTML = '<p>No news articles found.</p>';
+            }
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            newsList.innerHTML = '<p>Failed to load news. Please try again later.</p>';
+        }
+    }
+
+    fetchNews();
+</script>
+
+</body>
+<footer>
+    <p>&copy; Volunteer Connect made by Nirmal And Jalpan</p>
+</footer>
+</html>

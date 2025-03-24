@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/index.html">Volunteer Connect</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown" id="authDropdown" style="display: none;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Account
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+<!--            <li><a class="dropdown-item" href="/event-planning.html">Event Planning</a></li>-->
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" id="logoutButton">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Statistics Content -->
+<div class="container mt-5">
+  <h1>Statistics</h1>
+  <p>Welcome to the Statistics page! Here, you can view various analytics and reports.</p>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>User Activity</h3>
+      <canvas id="userActivityChart" width="400" height="200"></canvas>
+    </div>
+    <div class="col-md-6">
+      <h3>Event Participation</h3>
+      <canvas id="eventParticipationChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Include Chart.js for Graphs -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Example Chart Data
+  const userActivityCtx = document.getElementById('userActivityChart').getContext('2d');
+  const userActivityChart = new Chart(userActivityCtx, {
+    type: 'bar',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'User Logins',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const eventParticipationCtx = document.getElementById('eventParticipationChart').getContext('2d');
+  const eventParticipationChart = new Chart(eventParticipationCtx, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'Event Registrations',
+        data: [5, 10, 15, 20, 25, 30],
+        borderColor: 'rgba(153, 102, 255, 1)',
+        borderWidth: 2,
+        fill: false
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Include Authentication Script -->
+<script src="/scripts/auth.js"></script>
+</body>
+</html>

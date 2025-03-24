@@ -1,0 +1,80 @@
+<!-- Author Name: Nirmal Patel, Jalpan Patel -->
+<!-- Group 9 -->
+<!-- Date: 20/2/25 -->
+<!-- Description: This is the gallery file for the website which shows -->
+<!-- the picture with desciption about the picture which we use in assignment -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Volunteer Connect</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/Content/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">Volunteer Connect</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="opportunities.html">Opportunities</a></li>
+                <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+                <li class="nav-item"><a class="nav-link active" href="gallary.html">Gallery</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Gallery Section -->
+<div class="container mt-5">
+    <h2 class="text-center">Volunteer Events Gallery</h2>
+    <div class="row" id="gallery-container">
+        <!-- Images will be dynamically inserted here -->
+    </div>
+</div>
+
+<!-- Modal for displaying image and content -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" class="img-fluid mb-3" src="" alt="">
+                <p id="image-description"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; Volunteer Connect made by Nirmal And Jalpan</p>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script src="/scripts/gallery.ts"></script>
+
+</body>
+</html>

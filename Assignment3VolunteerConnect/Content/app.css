@@ -1,0 +1,96 @@
+/*
+    Author: Nirmal Patel, Jalpan Patel
+    Group: 9
+    Date: 23/1/25
+    Description: This is the main stylesheet for the Volunteer Connect website.
+    It defines the layout, colors, typography, and design elements for various sections of the website,
+     including the navigation bar, hero section, event display, footer, and buttons.
+*/
+/* Basic setting for the whole page*/
+body {
+    /* it will sets the font for the website */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+/* Navigation bar setting for the styling*/
+nav {
+    background-color: #4CAF50;
+}
+/*it will show logo or the brand name in the nav bar*/
+.navbar-brand {
+    font-size: 1.7rem;
+    color: white !important;
+    font-weight: bold;
+}
+/* it will show the links in the nav bar*/
+.nav-link {
+    color: white !important;
+    font-weight: 600;
+}
+/* it will change the link color when hovered */
+.nav-link:hover {
+    color: #FFD700 !important;
+}
+
+.hero-section {
+    text-align: center;
+    background-color: #00796b;
+    color: white;
+    padding: 80px 20px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.btn-custom {
+    background-color: #FFD700;
+    color: #333;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.btn-custom:hover {
+    background-color: #ffb300;
+    color: white;
+}
+
+.carousel-container {
+    padding: 40px 0; /* This ensures the same padding between header and footer */
+}
+/* it will show the images inside the carousel */
+.carousel-inner img {
+    border-radius: 10px;
+    /* it will show the shadow effects */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* here is the Footer styling*/
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1rem;
+}
+/* it will Links in the footer */
+footer a {
+    /* it state Gold text color */
+    color: #FFD700;
+    /* it will show No underline */
+    text-decoration: none;
+}
+/* Add underline to footer links on hover */
+footer a:hover {
+    /* Underline on hover */
+    text-decoration: underline;
+}

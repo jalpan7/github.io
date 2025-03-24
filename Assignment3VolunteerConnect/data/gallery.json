@@ -1,0 +1,32 @@
+[
+  {
+    "src": "../images/image 1.jpg",
+    "alt": "Event 1",
+    "title": "Community Cleanup Drive"
+  },
+  {
+    "src": "../images/image 2.jpg",
+    "alt": "Event 2",
+    "title": "helping elders"
+  },
+  {
+    "src": "../images/image 3.jpg",
+    "alt": "Event 3",
+    "title": "Tree Plantation Drive"
+  },
+  {
+    "src": "../images/image 4.jpg",
+    "alt": "Event 4",
+    "title": "Drive for Donations"
+  },
+  {
+    "src": "../images/image 5.jpg",
+    "alt": "Event 5",
+    "title": "Food Charity"
+  },
+  {
+    "src": "../images/image 6.jpg",
+    "alt": "Event 6",
+    "title": "Volunteer Event"
+  }
+]

@@ -1,0 +1,129 @@
+<!-- index.html -->
+<?php include('header.html'); ?>
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <h1>Welcome to Volunteer Connect Web Site!</h1>
+    <p>Come together with us as we work to improve your town and beyond.</p>
+    <a href="/views/content/opportunities.html" class="btn-custom">GET INVOLVED</a>
+</div>
+
+<!-- Carousel Section -->
+<div class="carousel-container container">
+    <div id="volunteerCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/Content/image 1.jpg" class="d-block w-100" alt="Volunteer image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/Content/image 2.jpg" class="d-block w-100" alt="Volunteer image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/Content/image 3.jpg" class="d-block w-100" alt="Volunteer image 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#volunteerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- Search Results Section -->
+<div id="searchResults" class="container mt-3"></div>
+
+<script src="scripts/logout.ts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (isLoggedIn === "true") {
+            document.getElementById("loginButton").classList.add("d-none");
+            document.getElementById("logoutButton").classList.remove("d-none");
+        }
+    });
+
+    const items = [
+        { name: "Charity Run", type: "event", link: "pages/events.html" },
+        { name: "Food Drive", type: "event", link: "pages/events.html" },
+        { name: "Beach Cleanup", type: "volunteer", link: "pages/opportunities.html" },
+        { name: "Animal Shelter Volunteering", type: "volunteer", link: "pages/opportunities.html" },
+        { name: "Local Community News", type: "news", link: "pages/news.html" },
+        { name: "Health & Wellness Seminar", type: "news", link: "pages/news.html" }
+    ];
+
+    function searchItems() {
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        const resultsContainer = document.getElementById("searchResults");
+        resultsContainer.innerHTML = "";
+
+        if (query.length === 0) {
+            resultsContainer.innerHTML = "<p class='text-center text-muted'>Enter a search term.</p>";
+            return;
+        }
+
+        if (query === "events") {
+            window.location.href = "pages/events.html";
+            return;
+        }
+        if (query === "opportunities") {
+            window.location.href = "pages/opportunities.html";
+            return;
+        }
+        if (query === "Contact Us") {
+            window.location.href = "pages/contactus.html";
+            return;
+        }
+        if (query === "about us") {
+            window.location.href = "pages/about.html";
+            return;
+        }
+        if (query === "donate") {
+            window.location.href = "pages/donate.html";
+            return;
+        }
+        if (query === "privacy policy") {
+            window.location.href = "pages/privacypolicy.html";
+            return;
+        }
+        if (query === "userpolicy") {
+            window.location.href = "pages/terms.html";
+            return;
+        }
+        if (query === "news") {
+            window.location.href = "pages/news.html";
+            return;
+        }
+        if (query === "gallery") {
+            window.location.href = "pages/gallary.html";
+            return;
+        }
+
+        const filteredItems = items.filter(item => item.name.toLowerCase().includes(query));
+
+        if (filteredItems.length === 0) {
+            resultsContainer.innerHTML = "<p class='text-center text-muted'>No results found.</p>";
+            return;
+        }
+
+        filteredItems.forEach(item => {
+            const resultItem = document.createElement("div");
+            resultItem.classList.add("alert", "alert-info", "mt-2");
+            resultItem.innerHTML = `<a href="${item.link}" class="text-decoration-none">${item.name} (${item.type})</a>`;
+            resultsContainer.appendChild(resultItem);
+        });
+    }
+
+    document.getElementById("searchInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            searchItems();
+        }
+    });
+</script>
+
+<?php include('footer.html'); ?>

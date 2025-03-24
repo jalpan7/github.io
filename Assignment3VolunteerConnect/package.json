@@ -1,0 +1,19 @@
+{
+  "name": "Assignment1VolunteerConnect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "author": "Nirmal6120 <nirmalmilindkumar.patel@dcmail.ca>",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21"
+  }
+}
